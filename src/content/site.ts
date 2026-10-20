@@ -73,19 +73,17 @@ export interface SiteContent {
 }
 
 const projectsStack = {
-  booking: ["React", "TypeScript", "Vite", "Zustand", "Tailwind"],
+  booking: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
   resumeBot: ["Node.js", "Telegraf", "PDFKit"],
   catalog: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui"],
   admin: ["React", "TypeScript", "TanStack Query", "Recharts"],
   dental: ["React", "TanStack Start", "Tailwind"],
-  repair: ["HTML", "CSS", "JavaScript"],
 } as const;
 
 const links = {
-  booking: "https://github.com/f-mcmc/barber-booking",
+  booking: "https://murodulloh-barbershop.vercel.app",
   resumeBot: "https://github.com/f-mcmc/Resume-bot-on-Telegram",
   catalog: "https://github.com/fintech-frontend/mini-19",
-  repair: "https://github.com/uzoster/serviceholod.by",
 } as const;
 
 export const content: Record<Locale, SiteContent> = {
@@ -158,10 +156,10 @@ export const content: Record<Locale, SiteContent> = {
       items: [
         {
           name: "Barbershopga onlayn yozilish",
-          kind: "Veb-ilova",
-          summary: "Mijoz ustani, xizmatni va bo'sh vaqtni tanlab yoziladi, yozilganlarini alohida sahifada ko'radi.",
+          kind: "Veb-ilova, backend bilan",
+          summary: "Mijoz usta, xizmat va bo'sh vaqtni tanlab yoziladi; bitta vaqtga ikki kishi yozila olmaydi. Egasi admin panelda yozilishlarni, tushumni, ustalar va xizmatlarni boshqaradi, yangi yozilish Telegram'ga keladi.",
           stack: projectsStack.booking,
-          link: { href: links.booking, label: "GitHub" },
+          link: { href: links.booking, label: "Saytni ochish" },
         },
         {
           name: "Rezyume yaratuvchi Telegram bot",
@@ -188,13 +186,6 @@ export const content: Record<Locale, SiteContent> = {
           kind: "Landing sahifa",
           summary: "Xizmatlar va narxlar, shifokorlar, qabulga yozilish formasi.",
           stack: projectsStack.dental,
-        },
-        {
-          name: "Muzlatkich ta'mirlash xizmati sayti",
-          kind: "Ko'p sahifali sayt",
-          summary: "Narxlar, bajarilgan ishlar, sharhlar, savol-javob va kontaktlar sahifalari.",
-          stack: projectsStack.repair,
-          link: { href: links.repair, label: "GitHub" },
         },
       ],
     },
@@ -284,10 +275,10 @@ export const content: Record<Locale, SiteContent> = {
       items: [
         {
           name: "Онлайн-запись в барбершоп",
-          kind: "Веб-приложение",
-          summary: "Клиент выбирает мастера, услугу и свободное время, а свои записи видит на отдельной странице.",
+          kind: "Веб-приложение с бэкендом",
+          summary: "Клиент выбирает мастера, услугу и свободное время; одно время не могут занять двое. Владелец в админ-панели видит записи и выручку, управляет мастерами и услугами, новые записи приходят в Telegram.",
           stack: projectsStack.booking,
-          link: { href: links.booking, label: "GitHub" },
+          link: { href: links.booking, label: "Открыть сайт" },
         },
         {
           name: "Telegram-бот для резюме",
@@ -314,13 +305,6 @@ export const content: Record<Locale, SiteContent> = {
           kind: "Лендинг",
           summary: "Услуги и цены, врачи, форма записи на приём.",
           stack: projectsStack.dental,
-        },
-        {
-          name: "Сайт сервиса по ремонту холодильников",
-          kind: "Многостраничный сайт",
-          summary: "Страницы цен, выполненных работ, отзывов, вопросов и контактов.",
-          stack: projectsStack.repair,
-          link: { href: links.repair, label: "GitHub" },
         },
       ],
     },
@@ -410,10 +394,10 @@ export const content: Record<Locale, SiteContent> = {
       items: [
         {
           name: "Barbershop online booking",
-          kind: "Web app",
-          summary: "Customers choose a barber, a service and a free slot, and see their bookings on a separate page.",
+          kind: "Full-stack web app",
+          summary: "Customers pick a barber, a service and a free slot; the same slot can never be booked twice. The owner manages bookings, revenue, barbers and services in an admin panel and gets new bookings in Telegram.",
           stack: projectsStack.booking,
-          link: { href: links.booking, label: "GitHub" },
+          link: { href: links.booking, label: "Live demo" },
         },
         {
           name: "Resume builder Telegram bot",
@@ -440,13 +424,6 @@ export const content: Record<Locale, SiteContent> = {
           kind: "Landing page",
           summary: "Services and prices, doctors, and an appointment form.",
           stack: projectsStack.dental,
-        },
-        {
-          name: "Fridge repair service website",
-          kind: "Multi-page site",
-          summary: "Pages for prices, completed jobs, reviews, FAQ and contacts.",
-          stack: projectsStack.repair,
-          link: { href: links.repair, label: "GitHub" },
         },
       ],
     },
