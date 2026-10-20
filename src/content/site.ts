@@ -74,13 +74,16 @@ export interface SiteContent {
 
 const projectsStack = {
   booking: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
+  restaurant: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
   resumeBot: ["Node.js", "Telegraf", "PDFKit"],
   catalog: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui"],
-  admin: ["React", "TypeScript", "TanStack Query", "Recharts"],
+  admin: ["React", "TypeScript", "Vite", "Recharts", "Three.js"],
   dental: ["React", "TanStack Start", "Tailwind"],
 } as const;
 
 const links = {
+  restaurant: "https://murodulloh-restoran.vercel.app",
+  admin: "https://stroyadmin.vercel.app",
   booking: "https://murodulloh-barbershop.vercel.app",
   resumeBot: "https://github.com/f-mcmc/Resume-bot-on-Telegram",
   catalog: "https://github.com/fintech-frontend/mini-19",
@@ -162,6 +165,13 @@ export const content: Record<Locale, SiteContent> = {
           link: { href: links.booking, label: "Saytni ochish" },
         },
         {
+          name: "Restoran uchun onlayn buyurtma",
+          kind: "Veb-ilova, backend bilan",
+          summary: "Mijoz menyudan taom tanlaydi, yetkazib berish yoki olib ketishni belgilaydi va buyurtma holatini jonli kuzatadi. Restoran admin panelda buyurtmalarni bosqichma-bosqich yuritadi, narx va stop-listni o'zi boshqaradi, kunlik tushumni ko'radi.",
+          stack: projectsStack.restaurant,
+          link: { href: links.restaurant, label: "Saytni ochish" },
+        },
+        {
           name: "Rezyume yaratuvchi Telegram bot",
           kind: "Telegram bot",
           summary: "Bot savollar beradi, javoblarni tekshiradi va tayyor rezyumeni PDF qilib yuboradi.",
@@ -180,6 +190,7 @@ export const content: Record<Locale, SiteContent> = {
           kind: "Boshqaruv paneli",
           summary: "Buyurtmalar, to'lovlar, ombor, mijozlar, hisobotlar va xodimlar rollari bitta joyda.",
           stack: projectsStack.admin,
+          link: { href: links.admin, label: "Saytni ochish" },
         },
         {
           name: "Stomatologiya klinikasi sayti",
@@ -281,6 +292,13 @@ export const content: Record<Locale, SiteContent> = {
           link: { href: links.booking, label: "Открыть сайт" },
         },
         {
+          name: "Онлайн-заказ для ресторана",
+          kind: "Веб-приложение с бэкендом",
+          summary: "Клиент выбирает блюда, доставку или самовывоз и в реальном времени следит за статусом заказа. Ресторан ведёт заказы по этапам в админ-панели, сам меняет цены и стоп-лист, видит дневную выручку.",
+          stack: projectsStack.restaurant,
+          link: { href: links.restaurant, label: "Открыть сайт" },
+        },
+        {
           name: "Telegram-бот для резюме",
           kind: "Telegram-бот",
           summary: "Бот задаёт вопросы, проверяет ответы и присылает готовое резюме в PDF.",
@@ -299,6 +317,7 @@ export const content: Record<Locale, SiteContent> = {
           kind: "Панель управления",
           summary: "Заказы, оплаты, склад, клиенты, отчёты и роли сотрудников в одном месте.",
           stack: projectsStack.admin,
+          link: { href: links.admin, label: "Открыть сайт" },
         },
         {
           name: "Сайт стоматологии",
@@ -400,6 +419,13 @@ export const content: Record<Locale, SiteContent> = {
           link: { href: links.booking, label: "Live demo" },
         },
         {
+          name: "Restaurant online ordering",
+          kind: "Full-stack web app",
+          summary: "Customers pick dishes, choose delivery or pickup and track their order status live. The restaurant moves orders through stages in an admin panel, edits prices and the stop list, and sees daily revenue.",
+          stack: projectsStack.restaurant,
+          link: { href: links.restaurant, label: "Live demo" },
+        },
+        {
           name: "Resume builder Telegram bot",
           kind: "Telegram bot",
           summary: "The bot asks questions, validates the answers and sends back a finished resume as a PDF.",
@@ -418,6 +444,7 @@ export const content: Record<Locale, SiteContent> = {
           kind: "Dashboard",
           summary: "Orders, payments, stock, customers, reports and staff roles in one place.",
           stack: projectsStack.admin,
+          link: { href: links.admin, label: "Live demo" },
         },
         {
           name: "Dental clinic website",
