@@ -76,7 +76,7 @@ const projectsStack = {
   booking: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
   restaurant: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
   resumeBot: ["Node.js", "Telegraf", "PDFKit"],
-  catalog: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui"],
+  catalog: ["Next.js", "TypeScript", "TanStack Query", "Django REST API"],
   admin: ["React", "TypeScript", "Vite", "Recharts", "Three.js"],
   dental: ["React", "TanStack Start", "Tailwind"],
 } as const;
@@ -86,7 +86,7 @@ const links = {
   admin: "https://stroyadmin.vercel.app",
   booking: "https://murodulloh-barbershop.vercel.app",
   resumeBot: "https://github.com/f-mcmc/Resume-bot-on-Telegram",
-  catalog: "https://github.com/fintech-frontend/mini-19",
+  catalog: "https://murodulloh-stroymarket.vercel.app",
 } as const;
 
 export const content: Record<Locale, SiteContent> = {
@@ -179,11 +179,11 @@ export const content: Record<Locale, SiteContent> = {
           link: { href: links.resumeBot, label: "GitHub" },
         },
         {
-          name: "Qurilish mollari katalogi",
+          name: "StroyMarket — qurilish mollari do'koni",
           kind: "Internet-do'kon, jamoaviy loyiha",
-          summary: "Mahsulotlar katalogi, galereyali mahsulot sahifasi, tablar va «Bir klikda sotib olish».",
+          summary: "Haqiqiy backend'ga ulangan do'kon: katalog daraxti va mega-menyu, qidiruv, savat, buyurtma, ro'yxatdan o'tish va shaxsiy kabinet. API integratsiyasi, katalog, blog va akkaunt qismlari menga tegishli.",
           stack: projectsStack.catalog,
-          link: { href: links.catalog, label: "GitHub" },
+          link: { href: links.catalog, label: "Saytni ochish" },
         },
         {
           name: "Do'kon uchun admin panel",
@@ -306,11 +306,11 @@ export const content: Record<Locale, SiteContent> = {
           link: { href: links.resumeBot, label: "GitHub" },
         },
         {
-          name: "Каталог стройматериалов",
+          name: "StroyMarket — магазин стройматериалов",
           kind: "Интернет-магазин, командный проект",
-          summary: "Каталог товаров, страница товара с галереей, вкладки и «Купить в один клик».",
+          summary: "Магазин на реальном бэкенде: дерево каталога и мега-меню, поиск, корзина, заказ, регистрация и личный кабинет. На мне — интеграция с API, каталог, блог и аккаунт.",
           stack: projectsStack.catalog,
-          link: { href: links.catalog, label: "GitHub" },
+          link: { href: links.catalog, label: "Открыть сайт" },
         },
         {
           name: "Админ-панель магазина",
@@ -433,11 +433,11 @@ export const content: Record<Locale, SiteContent> = {
           link: { href: links.resumeBot, label: "GitHub" },
         },
         {
-          name: "Building supplies catalog",
+          name: "StroyMarket — building supplies store",
           kind: "Online shop, team project",
-          summary: "Product catalog, product page with gallery, tabs and one-click ordering.",
+          summary: "A store on a real backend: category tree and mega-menu, search, cart, checkout, sign-up and personal account. My part: API integration, catalog, blog and account.",
           stack: projectsStack.catalog,
-          link: { href: links.catalog, label: "GitHub" },
+          link: { href: links.catalog, label: "Live demo" },
         },
         {
           name: "Shop admin panel",
