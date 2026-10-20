@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@import "@fontsource-variable/unbounded";
+@import "@fontsource-variable/onest";
+
+@theme {
+  --color-paper: #eef2f7;
+  --color-paper-deep: #e1e8f1;
+  --color-ink: #10204a;
+  --color-ink-soft: #4a5878;
+  --color-cobalt: #2340b8;
+  --color-cobalt-deep: #172d8a;
+  --color-turquoise: #12968e;
+  --color-saffron: #f2b233;
+  --color-line: #c9d3e2;
+  --color-bubble-bot: #ffffff;
+  --color-bubble-user: #d8f2ee;
+
+  --font-display: "Unbounded Variable", "Arial Black", sans-serif;
+  --font-sans: "Onest Variable", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-saffron);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--color-saffron);
+    color: var(--color-ink);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .chat-line {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+.chat-line {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: chat-in 420ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes chat-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.leader {
+  background-image: radial-gradient(circle, var(--color-line) 1.2px, transparent 1.4px);
+  background-size: 8px 8px;
+  background-position: 0 70%;
+  background-repeat: repeat-x;
+}
