@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ustara Barbershop — onlayn yozilish</title>
+  <meta name="description" content="Erkaklar sartaroshxonasi. Narxlar, ustalar va onlayn yozilish.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top__in">
+      <a href="#" class="logo" data-config="name">Ustara</a>
+      <nav class="top__nav" aria-label="Asosiy menyu">
+        <a href="#prices">Narxlar</a>
+        <a href="#masters">Ustalar</a>
+        <a href="#contact">Manzil</a>
+      </nav>
+      <a class="btn btn--red btn--sm" href="#book">Yozilish</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="pole" aria-hidden="true"></div>
+      <div class="wrap hero__in">
+        <p class="hero__kicker" data-config="tagline">Erkaklar sartaroshxonasi · Toshkent</p>
+        <h1>Navbatsiz soch oldiring</h1>
+        <p class="hero__lead">Xizmat, usta va vaqtni tanlang — so'rov Telegram orqali bizga keladi, biz vaqtni tasdiqlaymiz.</p>
+        <div class="hero__actions">
+          <a class="btn btn--red" href="#book">Onlayn yozilish</a>
+          <a class="btn btn--line" data-href="phone" href="tel:+998901234567">Qo'ng'iroq qilish</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="prices" id="prices" aria-labelledby="prices-title">
+      <div class="wrap">
+        <h2 id="prices-title">Narxlar</h2>
+        <ul class="price-list"></ul>
+      </div>
+    </section>
+
+    <section class="masters" id="masters" aria-labelledby="masters-title">
+      <div class="wrap">
+        <h2 id="masters-title">Ustalarimiz</h2>
+        <ul class="master-list"></ul>
+      </div>
+    </section>
+
+    <section class="book" id="book" aria-labelledby="book-title">
+      <div class="wrap book__in">
+        <div>
+          <h2 id="book-title">Onlayn yozilish</h2>
+          <p class="book__lead">Formani to'ldiring va «Yuborish»ni bosing. So'rov Telegram'da ochiladi — yuborganingizdan keyin administrator vaqtni tasdiqlaydi.</p>
+        </div>
+        <form class="book-form" novalidate>
+          <label>Xizmat<select name="service" required></select></label>
+          <label>Usta<select name="master" required></select></label>
+          <div class="row">
+            <label>Kun<input name="date" type="date" required></label>
+            <label>Vaqt<select name="time" required></select></label>
+          </div>
+          <label>Ismingiz<input name="name" autocomplete="name" required></label>
+          <label>Telefon<input name="phone" type="tel" autocomplete="tel" value="+998 " required></label>
+          <p class="form-error" role="alert" hidden></p>
+          <button class="btn btn--red btn--wide" type="submit">Telegram orqali yuborish</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact__in">
+        <div>
+          <h2 id="contact-title">Manzil</h2>
+          <dl>
+            <div><dt>Manzil</dt><dd data-config="address"></dd></div>
+            <div><dt>Ish vaqti</dt><dd data-config="hours"></dd></div>
+            <div><dt>Telefon</dt><dd><a data-config="phone" data-href="phone" href="#"></a></dd></div>
+            <div><dt>Instagram</dt><dd><a data-config="instagramText" data-href="instagram" href="#"></a></dd></div>
+          </dl>
+        </div>
+        <iframe class="map" title="Xaritada manzil" loading="lazy" src="about:blank"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__in">
+      <span>© <span data-year></span> <span data-config="name"></span> <span data-config="kind"></span></span>
+      <span>Sayt: <a href="https://murodulloh-portfolio.vercel.app">murodulloh-portfolio.vercel.app</a></span>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
