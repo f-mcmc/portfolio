@@ -75,6 +75,8 @@ export interface SiteContent {
 const projectsStack = {
   booking: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
   restaurant: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
+  clinic: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
+  ledger: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
   resumeBot: ["Node.js", "Telegraf", "PDFKit"],
   catalog: ["Next.js", "TypeScript", "TanStack Query", "Django REST API"],
   admin: ["React", "TypeScript", "Vite", "Recharts", "Three.js"],
@@ -85,6 +87,8 @@ const links = {
   restaurant: "https://murodulloh-restoran.vercel.app",
   admin: "https://stroyadmin.vercel.app",
   booking: "https://murodulloh-barbershop.vercel.app",
+  clinic: "https://murodulloh-klinika.vercel.app",
+  ledger: "https://murodulloh-qarz-daftar.vercel.app",
   resumeBot: "https://github.com/f-mcmc/Resume-bot-on-Telegram",
   catalog: "https://murodulloh-stroymarket.vercel.app",
 } as const;
@@ -170,6 +174,20 @@ export const content: Record<Locale, SiteContent> = {
           summary: "Mijoz menyudan taom tanlaydi, yetkazib berish yoki olib ketishni belgilaydi va buyurtma holatini jonli kuzatadi. Restoran admin panelda buyurtmalarni bosqichma-bosqich yuritadi, narx va stop-listni o'zi boshqaradi, kunlik tushumni ko'radi.",
           stack: projectsStack.restaurant,
           link: { href: links.restaurant, label: "Saytni ochish" },
+        },
+        {
+          name: "Klinikaga onlayn yozilish",
+          kind: "Veb-ilova, backend bilan",
+          summary: "Bemor yo'nalish, shifokor va bo'sh vaqtni tanlab qabulga yoziladi, o'z sahifasidan qabulni bekor qila oladi. Har bir shifokorning o'z ish kunlari va qabul davomiyligi bor. Qabulxona kunlik jadvalni yuritadi: keldi, qabul tugadi, kelmadi.",
+          stack: projectsStack.clinic,
+          link: { href: links.clinic, label: "Saytni ochish" },
+        },
+        {
+          name: "Qarz daftar — do'konlar uchun nasiya",
+          kind: "Veb-ilova, backend bilan",
+          summary: "Do'kon egasi mijozlarning qarzi va to'lovlarini yozadi, qoldiq o'zi hisoblanadi, 30 kundan oshganlar alohida ko'rinadi. Mijozga Telegram yoki SMS orqali eslatma va o'z hisob-kitobini ko'radigan havola yuboriladi.",
+          stack: projectsStack.ledger,
+          link: { href: links.ledger, label: "Saytni ochish" },
         },
         {
           name: "Rezyume yaratuvchi Telegram bot",
@@ -299,6 +317,20 @@ export const content: Record<Locale, SiteContent> = {
           link: { href: links.restaurant, label: "Открыть сайт" },
         },
         {
+          name: "Онлайн-запись в клинику",
+          kind: "Веб-приложение с бэкендом",
+          summary: "Пациент выбирает направление, врача и свободное время, а со своей страницы может отменить приём. У каждого врача свои рабочие дни и длительность приёма. Регистратура ведёт расписание дня: пришёл, приём завершён, не пришёл.",
+          stack: projectsStack.clinic,
+          link: { href: links.clinic, label: "Открыть сайт" },
+        },
+        {
+          name: "Qarz daftar — учёт долгов для магазинов",
+          kind: "Веб-приложение с бэкендом",
+          summary: "Хозяин магазина записывает долги и оплаты покупателей, остаток считается сам, просрочка больше 30 дней видна отдельно. Покупателю уходит напоминание в Telegram или SMS со ссылкой на его выписку.",
+          stack: projectsStack.ledger,
+          link: { href: links.ledger, label: "Открыть сайт" },
+        },
+        {
           name: "Telegram-бот для резюме",
           kind: "Telegram-бот",
           summary: "Бот задаёт вопросы, проверяет ответы и присылает готовое резюме в PDF.",
@@ -424,6 +456,20 @@ export const content: Record<Locale, SiteContent> = {
           summary: "Customers pick dishes, choose delivery or pickup and track their order status live. The restaurant moves orders through stages in an admin panel, edits prices and the stop list, and sees daily revenue.",
           stack: projectsStack.restaurant,
           link: { href: links.restaurant, label: "Live demo" },
+        },
+        {
+          name: "Clinic online appointments",
+          kind: "Full-stack web app",
+          summary: "Patients pick a department, a doctor and a free slot, and can cancel from their own appointment page. Each doctor has their own working days and visit length. Reception runs the day view: arrived, done, no-show.",
+          stack: projectsStack.clinic,
+          link: { href: links.clinic, label: "Live demo" },
+        },
+        {
+          name: "Qarz daftar — credit ledger for corner shops",
+          kind: "Full-stack web app",
+          summary: "Shop owners record what customers take on credit and what they pay back; balances are computed automatically and anyone over 30 days is flagged. Customers get a Telegram or SMS reminder with a link to their own read-only statement.",
+          stack: projectsStack.ledger,
+          link: { href: links.ledger, label: "Live demo" },
         },
         {
           name: "Resume builder Telegram bot",
