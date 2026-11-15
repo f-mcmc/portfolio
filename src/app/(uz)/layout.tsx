@@ -6,7 +6,7 @@ import "../globals.css";
 export const metadata: Metadata = buildMetadata("uz");
 
 export const viewport: Viewport = {
-  themeColor: "#eef2f7",
+  themeColor: "#060b1d",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

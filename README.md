@@ -18,7 +18,7 @@ Hammasi bitta faylda: `src/content/site.ts`.
 
 - `TELEGRAM_USERNAME` — Telegram username
 - `services.items` — xizmatlar va narxlar (har bir tilda alohida)
-- `work.items` — loyihalar ro'yxati
+- `repos` + `work.items` — loyihalar (faqat github.com/f-mcmc; `syne` va `K-house` ataylab kiritilmagan)
 
 ## Vercel'ga chiqarish
 

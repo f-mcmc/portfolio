@@ -26,11 +26,13 @@ export interface Service {
 }
 
 export interface Project {
+  id: string;
   name: string;
   kind: string;
   summary: string;
   stack: readonly string[];
-  link?: { href: string; label: string };
+  github: string;
+  demo?: string;
 }
 
 export interface Step {
@@ -49,6 +51,8 @@ export interface SiteContent {
   name: string;
   nav: { services: string; work: string; process: string; contact: string };
   hero: {
+    eyebrow: string;
+    scroll: string;
     title: string;
     lead: string;
     cta: string;
@@ -60,8 +64,20 @@ export interface SiteContent {
     lines: readonly ChatLine[];
     buttons: readonly string[];
   };
+  stats: readonly { value: number; label: string }[];
+  story: { desk: { title: string; text: string }; live: { title: string; text: string } };
+  chips: readonly string[];
+  mission: string;
   services: { title: string; note: string; from: string; items: readonly Service[] };
-  work: { title: string; lead: string; items: readonly Project[] };
+  work: {
+    title: string;
+    lead: string;
+    hint: string;
+    demo: string;
+    code: string;
+    close: string;
+    items: readonly Project[];
+  };
   process: { title: string; steps: readonly Step[] };
   contact: {
     title: string;
@@ -72,21 +88,27 @@ export interface SiteContent {
   footer: string;
 }
 
-const projectsStack = {
-  booking: ["React", "TypeScript", "Vite", "Zustand", "Tailwind"],
-  resumeBot: ["Node.js", "Telegraf", "PDFKit"],
-  catalog: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui"],
-  admin: ["React", "TypeScript", "TanStack Query", "Recharts"],
-  dental: ["React", "TanStack Start", "Tailwind"],
-  repair: ["HTML", "CSS", "JavaScript"],
+// Loyihalar faqat github.com/f-mcmc dan olingan.
+// Quyidagi repolar sayt ro'yxatiga ATAYLAB kiritilmagan: syne, K-house.
+const GH = "https://github.com/f-mcmc";
+
+const repos = {
+  stroy: { id: "stroymarket", name: "StroyMarket", stack: ["Next.js", "TypeScript", "Django REST"], github: `${GH}/StroyMarket`, demo: "https://stroy-market-zeta.vercel.app" },
+  klinika: { id: "klinika-online", name: "Klinika Online", stack: ["Next.js", "TypeScript", "PostgreSQL"], github: `${GH}/klinika-online`, demo: "https://klinika-online.vercel.app" },
+  restoran: { id: "restoran-online-order", name: "Restoran Order", stack: ["Next.js", "TypeScript", "PostgreSQL", "Telegram"], github: `${GH}/restoran-online-order`, demo: "https://restoran-online-order.vercel.app" },
+  barbershop: { id: "barbershop-booking", name: "Barbershop Booking", stack: ["Next.js", "TypeScript", "PostgreSQL", "Telegram"], github: `${GH}/barbershop-booking`, demo: "https://barbershop-booking-sepia.vercel.app" },
+  qarz: { id: "qarz-daftar", name: "Qarz Daftar", stack: ["Next.js", "TypeScript", "PostgreSQL"], github: `${GH}/qarz-daftar`, demo: "https://qarz-daftar-alpha.vercel.app" },
+  // Market-S repo = "Stroyopttorg": do'kon sayti + /admin panel. Demo: stroyadmin.vercel.app (egasi tasdiqlagan).
+  market: { id: "stroy-admin", name: "Stroy Admin", stack: ["Next.js", "TypeScript", "RTK Query", "Tailwind"], github: `${GH}/Market-S`, demo: "https://stroyadmin.vercel.app" },
+  barber: { id: "barber-booking", name: "Barber Booking", stack: ["React", "TypeScript", "Vite", "Zustand", "Tailwind"], github: `${GH}/barber-booking` },
+  bot: { id: "resume-bot", name: "Resume Bot", stack: ["Node.js", "Telegraf", "PDFKit"], github: `${GH}/Resume-bot-on-Telegram` },
 } as const;
 
-const links = {
-  booking: "https://github.com/f-mcmc/barber-booking",
-  resumeBot: "https://github.com/f-mcmc/Resume-bot-on-Telegram",
-  catalog: "https://github.com/fintech-frontend/mini-19",
-  repair: "https://github.com/uzoster/serviceholod.by",
-} as const;
+type RepoKey = keyof typeof repos;
+
+function project(key: RepoKey, kind: string, summary: string): Project {
+  return { ...repos[key], kind, summary };
+}
 
 export const content: Record<Locale, SiteContent> = {
   uz: {
@@ -99,6 +121,8 @@ export const content: Record<Locale, SiteContent> = {
     name: "Murodulloh",
     nav: { services: "Narxlar", work: "Ishlarim", process: "Qanday ishlaymiz", contact: "Bog'lanish" },
     hero: {
+      eyebrow: "Murodulloh · Toshkent",
+      scroll: "Pastga aylantiring",
       title: "Biznesingiz uchun sayt va Telegram bot",
       lead: "Kafe, salon, klinika va do'konlarga mijoz olib keladigan sayt yoki bot qilib beraman. Kichik loyiha 1–2 haftada tayyor bo'ladi.",
       cta: "Telegram'da yozish",
@@ -115,87 +139,63 @@ export const content: Record<Locale, SiteContent> = {
       ],
       buttons: ["10:00", "13:30", "17:00"],
     },
+    stats: [{ value: 8, label: "ta loyiha" }, { value: 5, label: "ta jonli demo" }, { value: 3, label: "ta til" }],
+    story: { desk: { title: "G'oyadan tayyor saytgacha", text: "Biznesingizni tinglayman, keyin sayt yoki botni o'zim qurib beraman." }, live: { title: "Har bir loyiha ochiladi", text: "Barcha ishlarim internetda jonli. Mijozlaringiz bosib ko'ra oladi." } },
+    chips: ["Next.js", "Telegram bot", "TypeScript", "PostgreSQL", "uz · ru · en"],
+    mission: "Men shunchaki chiroyli emas, mijoz olib keladigan saytlar qilaman: tez ochiladi, telefonda qulay va aynan sizning biznesingizga moslangan.",
     services: {
       title: "Xizmatlar va narxlar",
-      note: "Narx loyihaga qarab aniq kelishiladi. Ishni boshlashdan oldin 50% oldindan to'lanadi.",
-      from: "",
+      note: "Narxlar boshlanish narxi. Loyihani muhokama qilib, yakuniy narxni alohida kelishamiz: u ishning hajmiga qarab o'zgaradi. Boshlashdan oldin 50% oldindan to'lanadi.",
+      from: "Boshlanishi",
       items: [
         {
           name: "Landing sahifa",
           includes: "Bitta sahifali sayt: xizmatlar, narxlar, manzil, xarita, Telegram tugmasi. Telefonda chiroyli ochiladi.",
-          price: "1 500 000 so'mdan",
+          price: "1 500 000 so'm",
           time: "5–7 kun",
         },
         {
           name: "Telegram bot",
           includes: "Buyurtma qabul qiladigan, savollarga javob beradigan yoki ariza yig'adigan bot. Arizalar sizga keladi.",
-          price: "800 000 so'mdan",
+          price: "800 000 so'm",
           time: "3–7 kun",
         },
         {
           name: "Onlayn yozilish",
           includes: "Mijoz usta, xizmat va vaqtni o'zi tanlaydi. Salon, barbershop va klinikalar uchun.",
-          price: "2 500 000 so'mdan",
+          price: "2 500 000 so'm",
           time: "1–2 hafta",
         },
         {
           name: "Katalog yoki kichik do'kon",
           includes: "Mahsulotlar ro'yxati, filtrlar, mahsulot sahifasi va «Bir klikda sotib olish» tugmasi.",
-          price: "3 500 000 so'mdan",
+          price: "3 500 000 so'm",
           time: "2–3 hafta",
         },
         {
           name: "Saytni tuzatish va yangilash",
           includes: "Matn, rasm, narxlarni almashtirish, xatolarni tuzatish, saytni tezlashtirish.",
-          price: "200 000 so'mdan",
+          price: "200 000 so'm",
           time: "1–2 kun",
         },
       ],
     },
     work: {
       title: "Ishlarim",
-      lead: "Kodni GitHub'da ochiq ko'rish mumkin.",
+      lead: "Barcha loyihalar GitHub'da ochiq, ko'pchiligining jonli demosi bor.",
+      hint: "Kartochkalarni sudrang va uloqtiring, bosib oching.",
+      demo: "Jonli demo",
+      code: "Kod (GitHub)",
+      close: "Yopish",
       items: [
-        {
-          name: "Barbershopga onlayn yozilish",
-          kind: "Veb-ilova",
-          summary: "Mijoz ustani, xizmatni va bo'sh vaqtni tanlab yoziladi, yozilganlarini alohida sahifada ko'radi.",
-          stack: projectsStack.booking,
-          link: { href: links.booking, label: "GitHub" },
-        },
-        {
-          name: "Rezyume yaratuvchi Telegram bot",
-          kind: "Telegram bot",
-          summary: "Bot savollar beradi, javoblarni tekshiradi va tayyor rezyumeni PDF qilib yuboradi.",
-          stack: projectsStack.resumeBot,
-          link: { href: links.resumeBot, label: "GitHub" },
-        },
-        {
-          name: "Qurilish mollari katalogi",
-          kind: "Internet-do'kon, jamoaviy loyiha",
-          summary: "Mahsulotlar katalogi, galereyali mahsulot sahifasi, tablar va «Bir klikda sotib olish».",
-          stack: projectsStack.catalog,
-          link: { href: links.catalog, label: "GitHub" },
-        },
-        {
-          name: "Do'kon uchun admin panel",
-          kind: "Boshqaruv paneli",
-          summary: "Buyurtmalar, to'lovlar, ombor, mijozlar, hisobotlar va xodimlar rollari bitta joyda.",
-          stack: projectsStack.admin,
-        },
-        {
-          name: "Stomatologiya klinikasi sayti",
-          kind: "Landing sahifa",
-          summary: "Xizmatlar va narxlar, shifokorlar, qabulga yozilish formasi.",
-          stack: projectsStack.dental,
-        },
-        {
-          name: "Muzlatkich ta'mirlash xizmati sayti",
-          kind: "Ko'p sahifali sayt",
-          summary: "Narxlar, bajarilgan ishlar, sharhlar, savol-javob va kontaktlar sahifalari.",
-          stack: projectsStack.repair,
-          link: { href: links.repair, label: "GitHub" },
-        },
+        project("stroy", "Internet-do'kon", "Qurilish mollari do'koni: katalog, savat, shaxsiy kabinet. Backend Django REST'da."),
+        project("klinika", "Onlayn yozilish", "Klinikaga onlayn yozilish: shifokorlar jadvali va qabulxona uchun admin panel."),
+        project("restoran", "Buyurtma tizimi", "Restoran onlayn buyurtma: buyurtma holati, admin panel va Telegram xabarnomalari."),
+        project("barbershop", "Onlayn yozilish", "Barbershopga yozilish: admin panel va Telegram'ga xabarnoma."),
+        project("qarz", "Veb-ilova", "Mahalla do'konlari uchun nasiya (qarz) daftari."),
+        project("market", "Sayt va admin panel", "Qurilish do'koni sayti va admin panel: buyurtmalar, rollar va uch tilli interfeys."),
+        project("barber", "Veb-ilova", "Mijoz usta, xizmat va bo'sh vaqtni tanlab yoziladi, yozilganlarini alohida sahifada ko'radi."),
+        project("bot", "Telegram bot", "Bot savollar beradi, javoblarni tekshiradi va tayyor rezyumeni PDF qilib yuboradi."),
       ],
     },
     process: {
@@ -225,6 +225,8 @@ export const content: Record<Locale, SiteContent> = {
     name: "Мурадулло",
     nav: { services: "Цены", work: "Работы", process: "Как работаем", contact: "Связаться" },
     hero: {
+      eyebrow: "Мурадулло · Ташкент",
+      scroll: "Прокрутите вниз",
       title: "Сайт и Telegram-бот для вашего бизнеса",
       lead: "Делаю сайты и ботов для кафе, салонов, клиник и магазинов, которые приводят клиентов. Небольшой проект — за 1–2 недели.",
       cta: "Написать в Telegram",
@@ -241,9 +243,13 @@ export const content: Record<Locale, SiteContent> = {
       ],
       buttons: ["10:00", "13:30", "17:00"],
     },
+    stats: [{ value: 8, label: "проектов" }, { value: 5, label: "живых демо" }, { value: 3, label: "языка" }],
+    story: { desk: { title: "От идеи до готового сайта", text: "Выслушаю ваш бизнес и сам соберу сайт или бота." }, live: { title: "Каждый проект открывается", text: "Все работы живут в интернете. Можно открыть и посмотреть." } },
+    chips: ["Next.js", "Telegram-бот", "TypeScript", "PostgreSQL", "uz · ru · en"],
+    mission: "Я делаю сайты, которые не просто красивы, а приводят клиентов: быстро открываются, удобны с телефона и заточены под ваш бизнес.",
     services: {
       title: "Услуги и цены",
-      note: "Точная цена согласуется под проект. Перед началом работы — предоплата 50%.",
+      note: "Указана начальная цена. Итоговую стоимость мы обсудим и согласуем отдельно: она зависит от объёма работы. Перед началом — предоплата 50%.",
       from: "от",
       items: [
         {
@@ -280,48 +286,20 @@ export const content: Record<Locale, SiteContent> = {
     },
     work: {
       title: "Работы",
-      lead: "Код можно посмотреть на GitHub.",
+      lead: "Все проекты открыты на GitHub, у большинства есть живое демо.",
+      hint: "Перетаскивайте и бросайте карточки, нажмите, чтобы открыть.",
+      demo: "Живое демо",
+      code: "Код (GitHub)",
+      close: "Закрыть",
       items: [
-        {
-          name: "Онлайн-запись в барбершоп",
-          kind: "Веб-приложение",
-          summary: "Клиент выбирает мастера, услугу и свободное время, а свои записи видит на отдельной странице.",
-          stack: projectsStack.booking,
-          link: { href: links.booking, label: "GitHub" },
-        },
-        {
-          name: "Telegram-бот для резюме",
-          kind: "Telegram-бот",
-          summary: "Бот задаёт вопросы, проверяет ответы и присылает готовое резюме в PDF.",
-          stack: projectsStack.resumeBot,
-          link: { href: links.resumeBot, label: "GitHub" },
-        },
-        {
-          name: "Каталог стройматериалов",
-          kind: "Интернет-магазин, командный проект",
-          summary: "Каталог товаров, страница товара с галереей, вкладки и «Купить в один клик».",
-          stack: projectsStack.catalog,
-          link: { href: links.catalog, label: "GitHub" },
-        },
-        {
-          name: "Админ-панель магазина",
-          kind: "Панель управления",
-          summary: "Заказы, оплаты, склад, клиенты, отчёты и роли сотрудников в одном месте.",
-          stack: projectsStack.admin,
-        },
-        {
-          name: "Сайт стоматологии",
-          kind: "Лендинг",
-          summary: "Услуги и цены, врачи, форма записи на приём.",
-          stack: projectsStack.dental,
-        },
-        {
-          name: "Сайт сервиса по ремонту холодильников",
-          kind: "Многостраничный сайт",
-          summary: "Страницы цен, выполненных работ, отзывов, вопросов и контактов.",
-          stack: projectsStack.repair,
-          link: { href: links.repair, label: "GitHub" },
-        },
+        project("stroy", "Интернет-магазин", "Магазин стройматериалов: каталог, корзина, личный кабинет. Бэкенд на Django REST."),
+        project("klinika", "Онлайн-запись", "Запись в клинику онлайн: расписание врачей и админ-панель для регистратуры."),
+        project("restoran", "Система заказов", "Онлайн-заказ в ресторане: статус заказа, админ-панель и уведомления в Telegram."),
+        project("barbershop", "Онлайн-запись", "Запись в барбершоп: админ-панель и уведомления в Telegram."),
+        project("qarz", "Веб-приложение", "Долговая тетрадь для магазинов у дома."),
+        project("market", "Сайт и админ-панель", "Сайт строительного магазина и админ-панель: заказы, роли и интерфейс на трёх языках."),
+        project("barber", "Веб-приложение", "Клиент выбирает мастера, услугу и свободное время, а свои записи видит на отдельной странице."),
+        project("bot", "Telegram-бот", "Бот задаёт вопросы, проверяет ответы и присылает готовое резюме в PDF."),
       ],
     },
     process: {
@@ -351,6 +329,8 @@ export const content: Record<Locale, SiteContent> = {
     name: "Murodulloh",
     nav: { services: "Prices", work: "Work", process: "How it works", contact: "Contact" },
     hero: {
+      eyebrow: "Murodulloh · Tashkent",
+      scroll: "Scroll down",
       title: "Websites and Telegram bots for your business",
       lead: "I build websites and bots that bring customers to cafes, salons, clinics and shops. A small project is ready in 1–2 weeks.",
       cta: "Message me on Telegram",
@@ -367,9 +347,13 @@ export const content: Record<Locale, SiteContent> = {
       ],
       buttons: ["10:00", "13:30", "17:00"],
     },
+    stats: [{ value: 8, label: "projects" }, { value: 5, label: "live demos" }, { value: 3, label: "languages" }],
+    story: { desk: { title: "From idea to finished site", text: "I listen to your business, then build the site or bot myself." }, live: { title: "Every project is live", text: "All my work is online. Open it and see for yourself." } },
+    chips: ["Next.js", "Telegram bot", "TypeScript", "PostgreSQL", "uz · ru · en"],
+    mission: "I build websites that don't just look good, they bring customers: they load fast, work well on phones and fit your business.",
     services: {
       title: "Services and prices",
-      note: "The exact price is agreed per project. 50% is paid upfront before work starts. Prices in Uzbek soʻm.",
+      note: "Prices shown are starting prices. We agree the final price separately after discussing your project, and it depends on the scope of the work. 50% is paid upfront before work starts. Prices in Uzbek soʻm.",
       from: "from",
       items: [
         {
@@ -406,48 +390,20 @@ export const content: Record<Locale, SiteContent> = {
     },
     work: {
       title: "Work",
-      lead: "The code is public on GitHub.",
+      lead: "All projects are public on GitHub, most have a live demo.",
+      hint: "Drag and throw the cards, click to open.",
+      demo: "Live demo",
+      code: "Code (GitHub)",
+      close: "Close",
       items: [
-        {
-          name: "Barbershop online booking",
-          kind: "Web app",
-          summary: "Customers choose a barber, a service and a free slot, and see their bookings on a separate page.",
-          stack: projectsStack.booking,
-          link: { href: links.booking, label: "GitHub" },
-        },
-        {
-          name: "Resume builder Telegram bot",
-          kind: "Telegram bot",
-          summary: "The bot asks questions, validates the answers and sends back a finished resume as a PDF.",
-          stack: projectsStack.resumeBot,
-          link: { href: links.resumeBot, label: "GitHub" },
-        },
-        {
-          name: "Building supplies catalog",
-          kind: "Online shop, team project",
-          summary: "Product catalog, product page with gallery, tabs and one-click ordering.",
-          stack: projectsStack.catalog,
-          link: { href: links.catalog, label: "GitHub" },
-        },
-        {
-          name: "Shop admin panel",
-          kind: "Dashboard",
-          summary: "Orders, payments, stock, customers, reports and staff roles in one place.",
-          stack: projectsStack.admin,
-        },
-        {
-          name: "Dental clinic website",
-          kind: "Landing page",
-          summary: "Services and prices, doctors, and an appointment form.",
-          stack: projectsStack.dental,
-        },
-        {
-          name: "Fridge repair service website",
-          kind: "Multi-page site",
-          summary: "Pages for prices, completed jobs, reviews, FAQ and contacts.",
-          stack: projectsStack.repair,
-          link: { href: links.repair, label: "GitHub" },
-        },
+        project("stroy", "Online shop", "Building supplies shop: catalog, cart, user account. Backend on Django REST."),
+        project("klinika", "Online booking", "Clinic appointment booking: doctors' schedule and a reception admin panel."),
+        project("restoran", "Order system", "Restaurant online ordering: order status, admin panel and Telegram notifications."),
+        project("barbershop", "Online booking", "Barbershop booking with an admin panel and Telegram notifications."),
+        project("qarz", "Web app", "A debt ledger for neighbourhood shops."),
+        project("market", "Site and admin panel", "A building-supplies shop site with an admin panel: orders, roles and a three-language interface."),
+        project("barber", "Web app", "Customers choose a barber, a service and a free slot, and see their bookings on a separate page."),
+        project("bot", "Telegram bot", "The bot asks questions, validates the answers and sends back a finished resume as a PDF."),
       ],
     },
     process: {
