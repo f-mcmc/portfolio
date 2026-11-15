@@ -31,7 +31,7 @@ export interface Project {
   kind: string;
   summary: string;
   stack: readonly string[];
-  github: string;
+  github?: string;
   demo?: string;
 }
 
@@ -93,13 +93,13 @@ export interface SiteContent {
 const GH = "https://github.com/f-mcmc";
 
 const repos = {
-  stroy: { id: "stroymarket", name: "StroyMarket", stack: ["Next.js", "TypeScript", "Django REST"], github: `${GH}/StroyMarket`, demo: "https://murodulloh-stroymarket.vercel.app" },
+  stroy: { id: "stroyopttorg", name: "Stroyopttorg", stack: ["Next.js", "TypeScript", "RTK Query", "Django REST"], github: `${GH}/Market-S`, demo: "https://murodulloh-market-s.vercel.app" },
   klinika: { id: "klinika-online", name: "Klinika Online", stack: ["Next.js", "TypeScript", "PostgreSQL"], github: `${GH}/klinika-online`, demo: "https://murodulloh-klinika.vercel.app" },
   restoran: { id: "restoran-online-order", name: "Restoran Order", stack: ["Next.js", "TypeScript", "PostgreSQL", "Telegram"], github: `${GH}/restoran-online-order`, demo: "https://murodulloh-restoran.vercel.app" },
   barbershop: { id: "barbershop-booking", name: "Barbershop Booking", stack: ["Next.js", "TypeScript", "PostgreSQL", "Telegram"], github: `${GH}/barbershop-booking`, demo: "https://murodulloh-barbershop.vercel.app" },
   qarz: { id: "qarz-daftar", name: "Qarz Daftar", stack: ["Next.js", "TypeScript", "PostgreSQL"], github: `${GH}/qarz-daftar`, demo: "https://murodulloh-qarz-daftar.vercel.app" },
-  // Market-S repo = "Stroyopttorg": do'kon sayti + /admin panel. Demo: stroyadmin.vercel.app (egasi tasdiqlagan).
-  market: { id: "stroy-admin", name: "Stroy Admin", stack: ["Next.js", "TypeScript", "RTK Query", "Tailwind"], github: `${GH}/Market-S`, demo: "https://stroyadmin.vercel.app" },
+  // Stroy Admin: alohida admin panel (GitHub repo yopiq, shuning uchun faqat demo havolasi). Demo egasi tasdiqlagan.
+  market: { id: "stroy-admin", name: "Stroy Admin", stack: ["Next.js", "TypeScript", "RTK Query", "Tailwind"], demo: "https://stroyadmin.vercel.app" },
   barber: { id: "barber-booking", name: "Barber Booking", stack: ["React", "TypeScript", "Vite", "Zustand", "Tailwind"], github: `${GH}/barber-booking`, demo: "https://murodulloh-barber-booking.vercel.app" },
   bot: { id: "resume-bot", name: "Resume Bot", stack: ["Node.js", "Telegraf", "PDFKit"], github: `${GH}/Resume-bot-on-Telegram` },
 } as const;
@@ -188,7 +188,7 @@ export const content: Record<Locale, SiteContent> = {
       code: "Kod (GitHub)",
       close: "Yopish",
       items: [
-        project("stroy", "Internet-do'kon", "Qurilish mollari do'koni: katalog, savat, shaxsiy kabinet. Backend Django REST'da."),
+        project("stroy", "Internet-do'kon", "Qurilish mollari do'koni: katalog, savat, buyurtma va karta bilan to'lov, admin panel (rollar, buyurtmalar) va uch tilli interfeys."),
         project("klinika", "Onlayn yozilish", "Klinikaga onlayn yozilish: shifokorlar jadvali va qabulxona uchun admin panel."),
         project("restoran", "Buyurtma tizimi", "Restoran onlayn buyurtma: buyurtma holati, admin panel va Telegram xabarnomalari."),
         project("barbershop", "Onlayn yozilish", "Barbershopga yozilish: admin panel va Telegram'ga xabarnoma."),
@@ -292,7 +292,7 @@ export const content: Record<Locale, SiteContent> = {
       code: "Код (GitHub)",
       close: "Закрыть",
       items: [
-        project("stroy", "Интернет-магазин", "Магазин стройматериалов: каталог, корзина, личный кабинет. Бэкенд на Django REST."),
+        project("stroy", "Интернет-магазин", "Магазин стройматериалов: каталог, корзина, заказ и оплата картой, админ-панель (роли, заказы) и интерфейс на трёх языках."),
         project("klinika", "Онлайн-запись", "Запись в клинику онлайн: расписание врачей и админ-панель для регистратуры."),
         project("restoran", "Система заказов", "Онлайн-заказ в ресторане: статус заказа, админ-панель и уведомления в Telegram."),
         project("barbershop", "Онлайн-запись", "Запись в барбершоп: админ-панель и уведомления в Telegram."),
@@ -396,7 +396,7 @@ export const content: Record<Locale, SiteContent> = {
       code: "Code (GitHub)",
       close: "Close",
       items: [
-        project("stroy", "Online shop", "Building supplies shop: catalog, cart, user account. Backend on Django REST."),
+        project("stroy", "Online shop", "Building supplies shop: catalog, cart, checkout with card payment, an admin panel (roles, orders) and a three-language interface."),
         project("klinika", "Online booking", "Clinic appointment booking: doctors' schedule and a reception admin panel."),
         project("restoran", "Order system", "Restaurant online ordering: order status, admin panel and Telegram notifications."),
         project("barbershop", "Online booking", "Barbershop booking with an admin panel and Telegram notifications."),

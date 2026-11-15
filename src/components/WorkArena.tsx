@@ -317,7 +317,7 @@ export function WorkArena({ items, labels }: { items: readonly Project[]; labels
               <i className="h-3 w-3 rounded-full bg-[#febc2e]" />
               <i className="h-3 w-3 rounded-full bg-[#28c840]" />
               <span className="ml-3 min-w-0 flex-1 truncate rounded-full bg-white/10 px-3 py-1 text-xs text-fg-soft">
-                {selected.demo ? selected.demo.replace("https://", "") : selected.github.replace("https://", "")}
+                {(selected.demo ?? selected.github ?? "").replace("https://", "")}
               </span>
               <button
                 type="button"
@@ -350,14 +350,16 @@ export function WorkArena({ items, labels }: { items: readonly Project[]; labels
                     {labels.demo} ↗
                   </a>
                 ) : null}
-                <a
-                  href={selected.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full border border-white/25 px-5 py-3 text-sm font-semibold hover:border-saffron hover:text-saffron"
-                >
-                  {labels.code} ↗
-                </a>
+                {selected.github ? (
+                  <a
+                    href={selected.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full border border-white/25 px-5 py-3 text-sm font-semibold hover:border-saffron hover:text-saffron"
+                  >
+                    {labels.code} ↗
+                  </a>
+                ) : null}
               </div>
             </div>
           </div>
