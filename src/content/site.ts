@@ -100,7 +100,7 @@ const repos = {
   qarz: { id: "qarz-daftar", name: "Qarz Daftar", stack: ["Next.js", "TypeScript", "PostgreSQL"], github: `${GH}/qarz-daftar`, demo: "https://murodulloh-qarz-daftar.vercel.app" },
   // Market-S repo = "Stroyopttorg": do'kon sayti + /admin panel. Demo: stroyadmin.vercel.app (egasi tasdiqlagan).
   market: { id: "stroy-admin", name: "Stroy Admin", stack: ["Next.js", "TypeScript", "RTK Query", "Tailwind"], github: `${GH}/Market-S`, demo: "https://stroyadmin.vercel.app" },
-  barber: { id: "barber-booking", name: "Barber Booking", stack: ["React", "TypeScript", "Vite", "Zustand", "Tailwind"], github: `${GH}/barber-booking` },
+  barber: { id: "barber-booking", name: "Barber Booking", stack: ["React", "TypeScript", "Vite", "Zustand", "Tailwind"], github: `${GH}/barber-booking`, demo: "https://murodulloh-barber-booking.vercel.app" },
   bot: { id: "resume-bot", name: "Resume Bot", stack: ["Node.js", "Telegraf", "PDFKit"], github: `${GH}/Resume-bot-on-Telegram` },
 } as const;
 
