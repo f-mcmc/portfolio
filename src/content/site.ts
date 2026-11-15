@@ -93,11 +93,11 @@ export interface SiteContent {
 const GH = "https://github.com/f-mcmc";
 
 const repos = {
-  stroy: { id: "stroymarket", name: "StroyMarket", stack: ["Next.js", "TypeScript", "Django REST"], github: `${GH}/StroyMarket`, demo: "https://stroy-market-zeta.vercel.app" },
-  klinika: { id: "klinika-online", name: "Klinika Online", stack: ["Next.js", "TypeScript", "PostgreSQL"], github: `${GH}/klinika-online`, demo: "https://klinika-online.vercel.app" },
-  restoran: { id: "restoran-online-order", name: "Restoran Order", stack: ["Next.js", "TypeScript", "PostgreSQL", "Telegram"], github: `${GH}/restoran-online-order`, demo: "https://restoran-online-order.vercel.app" },
-  barbershop: { id: "barbershop-booking", name: "Barbershop Booking", stack: ["Next.js", "TypeScript", "PostgreSQL", "Telegram"], github: `${GH}/barbershop-booking`, demo: "https://barbershop-booking-sepia.vercel.app" },
-  qarz: { id: "qarz-daftar", name: "Qarz Daftar", stack: ["Next.js", "TypeScript", "PostgreSQL"], github: `${GH}/qarz-daftar`, demo: "https://qarz-daftar-alpha.vercel.app" },
+  stroy: { id: "stroymarket", name: "StroyMarket", stack: ["Next.js", "TypeScript", "Django REST"], github: `${GH}/StroyMarket`, demo: "https://murodulloh-stroymarket.vercel.app" },
+  klinika: { id: "klinika-online", name: "Klinika Online", stack: ["Next.js", "TypeScript", "PostgreSQL"], github: `${GH}/klinika-online`, demo: "https://murodulloh-klinika.vercel.app" },
+  restoran: { id: "restoran-online-order", name: "Restoran Order", stack: ["Next.js", "TypeScript", "PostgreSQL", "Telegram"], github: `${GH}/restoran-online-order`, demo: "https://murodulloh-restoran.vercel.app" },
+  barbershop: { id: "barbershop-booking", name: "Barbershop Booking", stack: ["Next.js", "TypeScript", "PostgreSQL", "Telegram"], github: `${GH}/barbershop-booking`, demo: "https://murodulloh-barbershop.vercel.app" },
+  qarz: { id: "qarz-daftar", name: "Qarz Daftar", stack: ["Next.js", "TypeScript", "PostgreSQL"], github: `${GH}/qarz-daftar`, demo: "https://murodulloh-qarz-daftar.vercel.app" },
   // Market-S repo = "Stroyopttorg": do'kon sayti + /admin panel. Demo: stroyadmin.vercel.app (egasi tasdiqlagan).
   market: { id: "stroy-admin", name: "Stroy Admin", stack: ["Next.js", "TypeScript", "RTK Query", "Tailwind"], github: `${GH}/Market-S`, demo: "https://stroyadmin.vercel.app" },
   barber: { id: "barber-booking", name: "Barber Booking", stack: ["React", "TypeScript", "Vite", "Zustand", "Tailwind"], github: `${GH}/barber-booking` },
